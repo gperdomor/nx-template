@@ -25,7 +25,7 @@ Join the growing Nx community! We believe in building together and welcome contr
 - **Report Issues**: Found a bug or have a suggestion? [Open an issue](https://github.com/gperdomor/nx-template/issues/new/choose) on GitHub
 - **Ask Questions**: Need help or clarification? Start a conversation in [GitHub Discussions](https://github.com/gperdomor/nx-template/discussions)
 - **Contribute Code**: Pull requests are welcome! Check our [contribution guidelines](https://github.com/gperdomor/nx-template/blob/main/CONTRIBUTING.md) to get started
-- **Share Your Work**: Built something with Nx Tools? Share it with the community in the [Showcase discussion](https://github.com/gperdomor/nx-template/discussions/categories/show-and-tell)
+- **Share Your Work**: Built something with Nx Template? Share it with the community in the [Showcase discussion](https://github.com/gperdomor/nx-template/discussions/categories/show-and-tell)
 - **Spread the Word**: Star the [repository](https://github.com/gperdomor/nx-template), share on social media, or write about your experience
 
 ### Resources
@@ -33,7 +33,7 @@ Join the growing Nx community! We believe in building together and welcome contr
 - [GitHub Repository](https://github.com/gperdomor/nx-template) - Source code, issues, and project management
 - [Code of Conduct](https://github.com/gperdomor/nx-template/blob/main/CODE_OF_CONDUCT.md) - Our community standards and expectations
 
-Your feedback and contributions help make Nx Tools better for everyone!
+Your feedback and contributions help make Nx Template better for everyone!
 
 ## Authors
 
