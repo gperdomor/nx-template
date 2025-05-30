@@ -16,6 +16,8 @@ CI:
   only:
     - main
     - merge_requests
+  variables:
+    NX_CLOUD_ACCESS_TOKEN: $NX_CLOUD_ACCESS_TOKEN
   before_script:
     - corepack enable
     - corepack install
@@ -34,7 +36,7 @@ CI:
     # Prepend any command with "nx-cloud record --" to record its logs to Nx Cloud
     # - pnpm exec nx-cloud record -- echo Hello World
     # Nx Affected runs only tasks affected by the changes in this PR/commit. Learn more: https://nx.dev/ci/features/affected
-    - pnpm exec nx affected -t lint test build
+    - pnpm exec nx affected --base=$NX_BASE --head=$NX_HEAD -t lint test build
   cache:
     key:
       files:
