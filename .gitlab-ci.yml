@@ -16,8 +16,8 @@ CI:
   only:
     - main
     - merge_requests
-  variables:
-    NX_CLOUD_ACCESS_TOKEN: $NX_CLOUD_ACCESS_TOKEN
+  # variables:
+  #   NX_CLOUD_ACCESS_TOKEN: $NX_CLOUD_ACCESS_TOKEN
   before_script:
     - corepack enable
     - corepack install
