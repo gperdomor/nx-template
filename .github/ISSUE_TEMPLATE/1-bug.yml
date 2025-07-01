@@ -1,7 +1,6 @@
 name: 🐞 Bug Report
-description: File a bug report.
+description: This form is to report unexpected behavior in this project.
 labels: ['type: bug']
-type: Bug
 body:
   - type: markdown
     attributes:
