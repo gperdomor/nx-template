@@ -1,8 +1,13 @@
 ---
 include:
   - template: 'Workflows/MergeRequest-Pipelines.gitlab-ci.yml'
+  - template: Jobs/Code-Quality.gitlab-ci.yml
 
-image: node:22
+workflow:
+  auto_cancel:
+    on_new_commit: conservative
+
+image: node:24
 
 variables:
   CI: 'true'
@@ -13,11 +18,14 @@ variables:
 # Main job
 CI:
   interruptible: true
-  only:
-    - main
-    - merge_requests
   # variables:
   #   NX_CLOUD_ACCESS_TOKEN: $NX_CLOUD_ACCESS_TOKEN
+  cache:
+    key:
+      files:
+        - pnpm-lock.yaml
+    paths:
+      - .pnpm-store
   before_script:
     - corepack enable
     - corepack install
@@ -27,19 +35,16 @@ CI:
     # Run this command as early as possible, before dependencies are installed
     # Learn more at https://nx.dev/ci/reference/nx-cloud-cli#npx-nxcloud-startcirun
     # Uncomment this line to enable task distribution
-    # - pnpm dlx nx-cloud start-ci-run --distribute-on="3 linux-medium-js" --stop-agents-after="build"
+    # - pnpm dlx nx start-ci-run --distribute-on="3 linux-medium-js" --stop-agents-after="build"
 
     - pnpm install --frozen-lockfile
     - NX_HEAD=$CI_COMMIT_SHA
     - NX_BASE=${CI_MERGE_REQUEST_DIFF_BASE_SHA:-$CI_COMMIT_BEFORE_SHA}
 
     # Prepend any command with "nx-cloud record --" to record its logs to Nx Cloud
-    # - pnpm exec nx-cloud record -- echo Hello World
+    - pnpm exec nx-cloud record -- nx format:check
     # Nx Affected runs only tasks affected by the changes in this PR/commit. Learn more: https://nx.dev/ci/features/affected
     - pnpm exec nx affected --base=$NX_BASE --head=$NX_HEAD -t lint test build
-  cache:
-    key:
-      files:
-        - pnpm-lock.yaml
-    paths:
-      - .pnpm-store
+    # Nx Cloud recommends fixes for failures to help you get CI green faster. Learn more: https://nx.dev/ci/features/self-healing-ci
+  after_script:
+    - pnpm exec nx fix-ci
