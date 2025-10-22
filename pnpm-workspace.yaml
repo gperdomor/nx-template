@@ -2,7 +2,6 @@ packages:
   - packages/*
 
 autoInstallPeers: true
-strictPeerDependencies: false
 
 onlyBuiltDependencies:
   - lefthook
