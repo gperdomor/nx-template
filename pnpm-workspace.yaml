@@ -1,7 +1,5 @@
 packages:
   - packages/*
 
-autoInstallPeers: true
-
 onlyBuiltDependencies:
   - lefthook
